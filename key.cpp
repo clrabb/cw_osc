@@ -1,13 +1,19 @@
 #include <arduino.h>
 #include "key.h"
-
+#include "speaker.h"
 
 key::key( unsigned short key_pin ) 
     :
     m_key_pin( key_pin ),
-    m_last_press_millis( 0 )
+    m_last_press_millis( 0 ),
+    m_speaker( speaker() )
 {
     pinMode( key_pin, INPUT );
+}
+
+key::~key()
+{
+    delete this->m_speaker;
 }
 
 void 
@@ -38,9 +44,18 @@ void
 key::beat()
 {
     bool pressed = this->is_pressed();
+
+    if ( true )
+    {
+        this->speaker()->tone_on();
+    }
+    else
+    {
+        this->speaker()->tone_off();
+    }
 }
 
-const speaker&
+const speaker*
 key::speaker()
 {
     return this->m_speaker;

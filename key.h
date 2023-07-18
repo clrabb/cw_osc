@@ -8,16 +8,17 @@ class key
 private:
     unsigned long m_last_press_millis;
     unsigned short m_key_pin;
-    speaker m_speaker;
+    speaker* m_speaker;
 
 public:
     key( unsigned short key_pin );
+    ~key();
 
     void beat();
     unsigned long last_press_millis();
     void last_press_millis( unsigned long millis );
     unsigned short key_pin();
-    const speaker& speaker();
+    const speaker* speaker();
     bool is_pressed();
 
 

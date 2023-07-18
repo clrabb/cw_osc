@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "heartbeat.h"
 #include "key.h"
+#include "tone_constants.h"
 
 
 void play_tones() {
