@@ -7,22 +7,27 @@
 // are global.  Instead I just wrote a template you can use to 
 // make anything a singleton.
 //
-template <class T>
-class singleton_t
+namespace cw_osc
 {
-private:
-    static T* s_instance;
 
-public:
-    static T& instance() { return *s_instance; }
-    singleton_t<T>(T* i){ singleton_t<T>::s_instance = i; } // ctor
+    template <class T>
+    class singleton_t
+    {
+    private:
+        static T* s_instance;
 
-private:
-    singleton_t( const singleton_t& );             // disable copy ctor
-    singleton_t& operator=( const singleton_t& );  //disable assignment op
-};
+    public:
+        static T& instance() { return *s_instance; }
+        singleton_t<T>(T* i){ singleton_t<T>::s_instance = i; } // ctor
 
-template<typename T> T* singleton_t<T>::s_instance;
+    private:
+        singleton_t( const singleton_t& );             // disable copy ctor
+        singleton_t& operator=( const singleton_t& );  //disable assignment op
+    };
+
+    template<typename T> T* singleton_t<T>::s_instance;
+
+}
 
 #endif // SINGLETON_T_H
 

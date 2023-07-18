@@ -4,6 +4,7 @@
 #include "key.h"
 #include "tone_constants.h"
 
+using namespace cw_osc;
 
 void play_tones() {
     int melody[] = {

@@ -2,6 +2,8 @@
 #include "singleton_t.h"
 //#include <arduino.h>
 
+using namespace cw_osc;
+
 heartbeat::heartbeat( uint8_t led_pin, unsigned long mills_between_beats, unsigned long beat_length_mills )
     :
     m_led_pin( led_pin ),

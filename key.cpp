@@ -2,12 +2,14 @@
 #include "key.h"
 #include "speaker.h"
 
+using namespace cw_osc;
+
 key::key( unsigned short key_pin ) 
     :
     m_key_pin( key_pin ),
-    m_last_press_millis( 0 ),
-    m_speaker( speaker() )
+    m_last_press_millis( 0 )
 {
+    this->m_speaker = new cw_osc::speaker();
     pinMode( key_pin, INPUT );
 }
 

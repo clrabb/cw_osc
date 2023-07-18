@@ -1,3 +1,6 @@
+#ifndef TONES_CONSTANTS_H
+#define TONES_CONSTANTS_H
+
 static const short NUM_TONES = 89;
 
 static const short NOTE_B0 = 31;
@@ -89,3 +92,5 @@ static const short NOTE_C8 = 4186;
 static const short NOTE_CS8 = 4435;
 static const short NOTE_D8 = 4699;
 static const short NOTE_DS8 = 4978;
+
+#endif // TONE_CONSTANTS_H
