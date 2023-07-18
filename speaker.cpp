@@ -111,19 +111,30 @@ speaker::fill_tones()
 void
 speaker::tone_on()
 {
-    int read_tone = analogRead( A0 );
-    short tone_idx = map( read_tone, 1, 1020, 1, 89 );
-    Serial.print( "tone_idx: " );
-    Serial.print( tone_idx );
-    Serial.print( " read_tone: " );
-    Serial.println( read_tone );
-    tone( TONE_PIN, this->m_tones[ tone_idx ] );
+    if ( this->is_on() )
+      return;
+
+    int pot_value = analogRead( A0 );
+    if( pot_value > MAX_TONE_POT_VALUE )
+      pot_value = MAX_TONE_POT_VALUE;
+
+    int tone_idx = map( pot_value, 1, MAX_TONE_POT_VALUE, 1, NUM_TONES );
+    short tone_value = this->m_tones[ tone_idx ];
+    
+    tone( TONE_PIN, tone_value );
+    this->is_on( true );
 }
 
 void
 speaker::tone_off()
 {
-
+    if ( this->is_off() )
+        return;
+    else
+    {
+        noTone( TONE_PIN );
+        this->is_on( false );
+    }    
 }
 
 

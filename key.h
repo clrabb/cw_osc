@@ -9,6 +9,7 @@ private:
     unsigned long m_last_press_millis;
     unsigned short m_key_pin;
     speaker* m_speaker;
+    bool m_is_tone_on;
 
 public:
     key( unsigned short key_pin );
@@ -19,8 +20,8 @@ public:
     void last_press_millis( unsigned long millis );
     unsigned short key_pin();
     const speaker* speaker();
-    bool is_pressed();
-
+    bool is_key_down();
+    bool is_key_up();
 
 private:
     key( const key& );

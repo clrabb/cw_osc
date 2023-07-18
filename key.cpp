@@ -35,22 +35,27 @@ key::key_pin()
 }
 
 bool 
-key::is_pressed()
+key::is_key_down()
 {
-    return !( digitalRead( this->key_pin() ) );
+    return !( this->is_key_up() );
+}
+
+bool
+key::is_key_up()
+{
+    return digitalRead( this->key_pin() );
 }
 
 void
 key::beat()
 {
-    bool pressed = this->is_pressed();
-
-    if ( true )
+    if ( this->is_key_down() )
     {
         this->speaker()->tone_on();
     }
-    else
+    else if ( this->is_key_up() )
     {
+        // shut off the tone
         this->speaker()->tone_off();
     }
 }
