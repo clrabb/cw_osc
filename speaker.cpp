@@ -109,6 +109,19 @@ namespace cw_osc
         m_tones[88] = NOTE_DS8;  
     }
 
+    short 
+    speaker::read_tone_from_pot()
+    {
+        int pot_value = analogRead( A0 );
+        if( pot_value > MAX_TONE_POT_VALUE )
+          pot_value = MAX_TONE_POT_VALUE;
+
+        int tone_idx = map( pot_value, 1, MAX_TONE_POT_VALUE, 1, NUM_TONES );
+        int tone_value = this->m_tones[ tone_idx ];
+
+        return tone_value;
+    }
+
     void
     speaker::tone_on()
     {
@@ -118,20 +131,7 @@ namespace cw_osc
             return;
         }
 
-        int pot_value = analogRead( A0 );
-        if( pot_value > MAX_TONE_POT_VALUE )
-          pot_value = MAX_TONE_POT_VALUE;
-
-        int tone_idx = map( pot_value, 1, MAX_TONE_POT_VALUE, 1, NUM_TONES );
-        int tone_value = this->m_tones[ tone_idx ];
-        
-
-        Serial.print( " Pot value: " );
-        Serial.print( pot_value );
-        Serial.print( " tone index: " );
-        Serial.print( tone_idx );
-        Serial.print( " Tone value: " );
-        Serial.println( tone_value );
+        short tone_value = this->current_tone();
 
         tone( TONE_PIN, tone_value );
         this->is_on( true );

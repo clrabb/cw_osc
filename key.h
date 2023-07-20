@@ -2,6 +2,7 @@
 #define KEY_H
 
 #include "speaker.h"
+#include "key_state_abc.h"
 
 namespace cw_osc
 {

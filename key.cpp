@@ -53,11 +53,17 @@ key::beat()
 {
     if ( this->is_key_down() )
     {
+        if ( 0 == this->last_press_millis() && millis() - this->last_press_millis() )
+        {
+            this->last_press_millis( millis() );
+        }
+
         this->speaker()->tone_on();
     }
     else if ( this->is_key_up() )
     {
         // shut off the tone
+        this->last_press_millis( 0 );
         this->speaker()->tone_off();
     }
 }

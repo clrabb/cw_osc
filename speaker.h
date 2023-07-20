@@ -12,6 +12,7 @@ namespace cw_osc
     private:
         unsigned short m_tone_pin;
         bool m_is_on;
+        short m_current_tone;
         short m_tones[ NUM_TONES ];
 
     public:
@@ -25,6 +26,9 @@ namespace cw_osc
         bool is_off() { return !( this->is_on() ); }
         void is_on( bool on ) { this->m_is_on = on; }
         const int* tones() { return this->m_tones; }
+        short current_tone() { return this->m_current_tone; }
+        void current_tone( short tone ) { this->m_current_tone = tone; }
+        short read_tone_from_pot();
 
     private:
         void fill_tones();
