@@ -29,6 +29,7 @@ namespace cw_osc
         short current_tone() { return this->m_current_tone; }
         void current_tone( short tone ) { this->m_current_tone = tone; }
         short read_tone_from_pot();
+        void set_tone_from_pot();
 
     private:
         void fill_tones();

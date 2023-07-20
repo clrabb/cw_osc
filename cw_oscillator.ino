@@ -3,6 +3,7 @@
 #include "heartbeat.h"
 #include "key.h"
 #include "tone_constants.h"
+#include "speaker.h"
 
 using namespace cw_osc;
 
@@ -43,6 +44,7 @@ void setup() {
 void init_singletons() {
     singleton_t< heartbeat > hb(new heartbeat(LED_PIN, LED_MILLS_OFF, LED_MILLS_ON));
     singleton_t< key > k( new key( KEY_PIN ) );
+    singleton_t< speaker > s( new cw_osc::speaker() );
 }
 
 void loop() {

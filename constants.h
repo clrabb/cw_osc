@@ -10,7 +10,7 @@ namespace cw_osc
     static const short TONE_PIN = 8;
     static const short KEY_PIN = 4;
     static const short MAX_TONE_POT_VALUE = 1200;
-
+    static unsigned long KEY_DOWN_TUNE_THRESHOLD = 2000;
 }
 
 #endif // CONSTANTS_H

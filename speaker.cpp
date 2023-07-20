@@ -123,6 +123,12 @@ namespace cw_osc
     }
 
     void
+    speaker::set_tone_from_pot()
+    {
+        this->current_tone( this->read_tone_from_pot() );
+    }
+
+    void
     speaker::tone_on()
     {
         if ( this->is_on() )
